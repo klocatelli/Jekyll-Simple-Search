@@ -1,0 +1,27 @@
+---
+layout: home
+title: Search
+desctiption: Looking for something?
+---
+
+<div id="search-results">
+    Loading search results....
+</div>
+<script src="/javascript/jquery.js"></script>
+<script src="/javascript/jquery.query-2.1.7.js"></script>
+<script src="/javascript/stemmer.js"></script>
+<script src="/javascript/search_index.js"></script>
+<script>
+Search.performSearch($.query.get('q'), function(results) {
+  var query = $.query.get('q');
+  var result_container = $('#search-results');
+  var result_list = $('<ul class="posts"></ul>');
+  
+  result_container.text('Search results for: ' + query);
+  for (var i = 0; i < results.length; i++) {
+    var list_item = $('<li></li>');
+    list_item.append($('<a></a>').attr('href', results[i].filename).text(results[i].title));
+    result_list.append(list_item);
+  }
+  result_container.append(result_list);
+});</script>
