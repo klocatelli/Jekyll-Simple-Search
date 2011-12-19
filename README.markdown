@@ -2,12 +2,14 @@ A simple client-side search system for Jekyll, that doesn't require any 3rd part
 This is mostly a proof-of-concept. It works and I use it for [my site](http://www.klocatelli.name), but the code is probably sub-par (those lines of ruby are literally my first lines of ruby).
 
 Here's how it works (more or less):
+
 * At run time, a search index is generated. The index has the following structure:
     * An array of URIs
     * An array of titles
     * A given integer represents an article IDs, it maps into the URI and title arrays.
     * A hashtable with stemmed words as indices and an array of article IDs
     * The index is json-ified and inlined in the javascript search module
+    
 * From the index structure, the simple search system can easily follows:
     * For a given query, split into words
     * Stem each word
